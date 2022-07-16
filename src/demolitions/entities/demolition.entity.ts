@@ -1,5 +1,5 @@
 import { Car } from "src/cars/entities/car.entity";
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany, ManyToOne } from "typeorm";
 
 @Entity()
 export class Demolition {
@@ -31,6 +31,9 @@ export class Demolition {
     @OneToOne(() => Car,  { cascade: true })
     @JoinColumn()
     freeCar: Car;
+
+    @Column()
+    assignedTo?: string = '';
 
     @Column()
     privacy: boolean = false;

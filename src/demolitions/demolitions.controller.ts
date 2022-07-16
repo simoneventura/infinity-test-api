@@ -12,6 +12,12 @@ export class DemolitionsController {
     return this.demolitionsService.create(createDemolitionDto);
   }
 
+  @Post('assignEmployee')
+  assignEmployee(@Body() payload: { demolitionId: number, employeeName: string }){
+    console.log('Payload: ', payload)
+    return this.demolitionsService.assignEmployee(payload.demolitionId, payload.employeeName)
+  }
+
   @Get()
   findAll() {
     return this.demolitionsService.findAll();

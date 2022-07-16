@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Car } from 'src/cars/entities/car.entity';
-import { DataSource, FindManyOptions, FindOneOptions, FindOptionsSelect, FindOptionsSelectByString, Repository } from 'typeorm';
+import { DataSource, FindManyOptions, FindOneOptions, FindOptionsSelect, FindOptionsSelectByString, getConnection, Repository } from 'typeorm';
 import { CreateDemolitionDto } from './dto/create-demolition.dto';
 import { UpdateDemolitionDto } from './dto/update-demolition.dto';
 import { Demolition } from './entities/demolition.entity';
@@ -55,6 +55,26 @@ export class DemolitionsService {
   remove(id: number) {
     return `This action removes a #${id} demolition`;
   }
+
+  assignEmployee(demolitionId: number, employeeName: string){
+    return this.updateEmployee({ id: demolitionId }, employeeName)
+  }
+
+  async updateEmployee(dto: { id: number }, employeeName: string): Promise<any> {
+    try {
+      console.log('Sono il DTO: ', dto);
+      await this.demolitionRepository.update(dto.id, {assignedTo: employeeName}); 
+
+      return {
+        success: true,
+        message: 'Successfully updated profile',
+      };
+    } catch (err) {
+      console.log('Not succeeded!')
+    }
+}
+
+
 
   async createOne(demolition: Demolition) {
     const queryRunner = this.dataSource.createQueryRunner();

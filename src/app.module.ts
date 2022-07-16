@@ -21,7 +21,7 @@ import { Car } from './cars/entities/car.entity';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    CarsModule,
+    CarsModule
   ],
   controllers: [AppController],
   providers: [AppService],
