@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Car } from 'src/cars/entities/car.entity';
+import { MailService } from 'src/mail/mail.service';
 import { DataSource, FindManyOptions, FindOneOptions, FindOptionsSelect, FindOptionsSelectByString, getConnection, Repository } from 'typeorm';
 import { CreateDemolitionDto } from './dto/create-demolition.dto';
 import { UpdateDemolitionDto } from './dto/update-demolition.dto';
@@ -13,7 +14,8 @@ export class DemolitionsService {
     @InjectRepository(Demolition)
     private demolitionRepository: Repository<Demolition>,
     /* private carRepository: Repository<Car>, */
-    private dataSource: DataSource
+    private dataSource: DataSource,
+    private mailService: MailService
   ) {}
 
   create(createDemolitionDto: CreateDemolitionDto) {
@@ -35,7 +37,12 @@ export class DemolitionsService {
       city: createDemolitionDto.city,
       zipCode: createDemolitionDto.zipCode
     }) /* as Demolition */).then(
-      response => { return response }
+      response => { 
+        console.log('Demolition created');
+        this.mailService.sendUserDemolitionEmail(createDemolitionDto.email, createDemolitionDto.nomeUser, createDemolitionDto.cognomeUser).then(
+          success => console.log('Mail sent')
+        )
+      }
     )
   }
 

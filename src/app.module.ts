@@ -6,6 +6,7 @@ import { DemolitionsModule } from './demolitions/demolitions.module';
 import { Demolition } from './demolitions/entities/demolition.entity';
 import { CarsModule } from './cars/cars.module';
 import { Car } from './cars/entities/car.entity';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import { Car } from './cars/entities/car.entity';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    CarsModule
+    CarsModule,
+    MailModule
   ],
   controllers: [AppController],
   providers: [AppService],
