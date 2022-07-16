@@ -1,0 +1,48 @@
+import { Column, Entity, PrimaryColumn } from "typeorm";
+
+@Entity()
+export class Car {
+
+    constructor(car?: Car){
+        this.targa = car?.targa;
+        this.marca = car?.marca;
+        this.automodello = car?.automodello;
+        this.autoalimentazione = car?.autoalimentazione;
+        this.numeroporte = car?.numeroporte;
+        this.km = car?.km;
+        this.anno = car?.anno;
+        this.note = car?.note;
+        this.vaInMoto = car?.vaInMoto;
+        this.blocked = car?.blocked;
+    }
+
+    @PrimaryColumn()
+    targa: string;
+
+    @Column()
+    marca: string;
+
+    @Column()
+    automodello: string;
+
+    @Column()
+    autoalimentazione: number
+
+    @Column()
+    numeroporte: number;
+
+    @Column()
+    km: number;
+
+    @Column()
+    anno: number;
+
+    @Column()
+    note: string;
+
+    @Column()
+    vaInMoto: boolean;
+
+    @Column()
+    blocked: boolean;
+}
