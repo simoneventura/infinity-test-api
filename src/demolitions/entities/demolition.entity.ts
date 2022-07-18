@@ -1,5 +1,6 @@
 import { Car } from "src/cars/entities/car.entity";
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, OneToMany, ManyToOne } from "typeorm";
+import { IWrecker } from "src/wrecker/wrecker.service";
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "typeorm";
 
 @Entity()
 export class Demolition {
@@ -17,6 +18,9 @@ export class Demolition {
         this.source = demolition?.source;
         this.city = demolition?.city;
         this.zipCode = demolition?.zipCode;
+        this.emailProprietario = demolition?.emailProprietario
+        this.ownerName = demolition?.ownerName;
+        this.ownerLastname = demolition?.ownerLastname;
     }
 
     @PrimaryGeneratedColumn()
@@ -34,6 +38,12 @@ export class Demolition {
 
     @Column()
     assignedTo?: string = '';
+
+    @Column()
+    wreckerSocialReson?: string;
+
+    @Column()
+    wreckerEmail?: string;
 
     @Column()
     privacy: boolean = false;
@@ -84,6 +94,15 @@ export class Demolition {
 
     @Column()
     city: number = 0;
+
+    @Column()
+    emailProprietario: string;
+
+    @Column()
+    ownerName: string;
+
+    @Column()
+    ownerLastname: string;
 
     @Column()
     zipCode: number = 0;

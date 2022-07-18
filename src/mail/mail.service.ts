@@ -6,7 +6,7 @@ export class MailService {
 
     constructor(private mailerService: MailerService){}
 
-    async sendUserDemolitionEmail(userEmail: string, userName: string, userLastName: string){
+    async sendUserDemolitionEmail(userEmail: string, userName: string = '', userLastName: string = ''){
         await this.mailerService.sendMail({
             to: userEmail,
             from: 'Demolizioni Infinity Car',
@@ -14,9 +14,30 @@ export class MailService {
             template: "./newDemolition",
             context: {
                 clientName: userName,
-                clientLastname: userLastName,
+                clientLastName: userLastName,
                 clientEmail: userEmail
             }
+        })
+    }
+
+    async sendAssignationToUser(userEmail: string, userName: string){
+        await this.mailerService.sendMail({
+            to: userEmail,
+            from: 'Demolizioni Infinity Car',
+            subject: 'InfinityCar ',
+            template: "./assignationUser",
+            context: {
+                userName: userName
+            }
+        })
+    }
+
+    async sendAssignationToWrecker(wreckerEmail: string){
+        await this.mailerService.sendMail({
+            to: wreckerEmail,
+            from: 'Demolizioni Infinity Car',
+            subject: 'InfinityCar ti ha assegnato un auto' ,
+            template: "./assignationWrecker"
         })
     }
 }
