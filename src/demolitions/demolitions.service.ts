@@ -120,7 +120,7 @@ export class DemolitionsService {
   async updateWrecker(criteria: { id: number }, wrecker: IWrecker): Promise<any> {
     try {
       console.log('Sono il DTO: ', criteria);
-      await this.demolitionRepository.update(criteria.id, {wreckerEmail: wrecker.email, wreckerSocialReson: wrecker.socialReason}); 
+      await this.demolitionRepository.update(criteria.id, {wreckerEmail: wrecker.email, wreckerSocialReason: wrecker.socialReason}); 
 
       /* return {
         success: true,

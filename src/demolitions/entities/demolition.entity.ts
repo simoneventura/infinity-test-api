@@ -40,7 +40,7 @@ export class Demolition {
     assignedTo?: string = '';
 
     @Column()
-    wreckerSocialReson?: string;
+    wreckerSocialReason?: string;
 
     @Column()
     wreckerEmail?: string;

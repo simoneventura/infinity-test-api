@@ -1,6 +1,6 @@
 export class Wrecker {
 
-    socialReason: string;
-    email: string;
+    socialReason: string = '';
+    email: string = '';
     
 }
