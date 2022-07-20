@@ -21,6 +21,8 @@ export class Demolition {
         this.emailProprietario = demolition?.emailProprietario
         this.ownerName = demolition?.ownerName;
         this.ownerLastname = demolition?.ownerLastname;
+        this.wreckerSocialReason = '';
+        this.wreckerEmail = '';
     }
 
     @PrimaryGeneratedColumn()
@@ -40,10 +42,10 @@ export class Demolition {
     assignedTo?: string = '';
 
     @Column()
-    wreckerSocialReason?: string;
+    wreckerSocialReason?: string = '';
 
     @Column()
-    wreckerEmail?: string;
+    wreckerEmail?: string = ''
 
     @Column()
     privacy: boolean = false;
