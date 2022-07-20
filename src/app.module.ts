@@ -21,7 +21,7 @@ import { WreckerModule } from './wrecker/wrecker.module';
       database: 'infinitycar1',
       /* entities: [Demolition, Car], */
       autoLoadEntities: true,
-      synchronize: false,
+      synchronize: true,
     }),
     CarsModule,
     MailModule,
