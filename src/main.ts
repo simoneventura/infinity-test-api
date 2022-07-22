@@ -14,6 +14,7 @@ async function bootstrap() {
   app.enableCors({
     "origin": "https://www.infinitycarsnc.com/", 
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "credentials": true,
     "preflightContinue": false,
     "optionsSuccessStatus": 204
   } as CorsOptions);
