@@ -12,7 +12,7 @@ async function bootstrap() {
   }; */
   const app = await NestFactory.create<NestExpressApplication>(AppModule/* , { httpsOptions } */);
   app.enableCors({
-    "origin": "https://www.infinitycarsnc.com/", 
+    "origin": "https://www.infinitycarsnc.com", 
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     "credentials": true,
     "preflightContinue": false,
