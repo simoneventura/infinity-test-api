@@ -17,32 +17,32 @@ export class Car {
     }
 
     @PrimaryColumn()
-    targa: string;
+    targa: string = '';
 
     @Column()
-    marca: string;
+    marca: string = '';
 
     @Column()
-    automodello: string;
+    automodello: string = '';
 
     @Column()
-    autoalimentazione: number
+    autoalimentazione: number;
 
     @Column()
     numeroporte: number;
 
     @Column()
-    km: number;
+    km: number = 0;
 
     @Column()
-    anno: number;
+    anno: number = 0;
 
     @Column()
-    note: string;
+    note: string = '';
 
     @Column()
-    vaInMoto: boolean;
+    vaInMoto: boolean = false;
 
     @Column()
-    blocked: boolean;
+    blocked: boolean = false;
 }
