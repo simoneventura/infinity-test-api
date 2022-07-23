@@ -12,8 +12,8 @@ export class Car {
         this.km = car?.km;
         this.anno = car?.anno;
         this.note = car?.note;
-        this.vaInMoto = car?.vaInMoto;
-        this.blocked = car?.blocked;
+        this.vaInMoto = car?.vaInMoto ? car.vaInMoto : false;
+        this.blocked = car?.blocked ? car?.blocked : false;
     }
 
     @PrimaryColumn()

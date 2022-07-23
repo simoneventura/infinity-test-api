@@ -26,14 +26,14 @@ export class DemolitionsService {
     /* let carToUpdate = this.carRepository.find({ select: '*' as FindOptionsSelect<Car>, where: (carObj: Car) => carObj.targa === createDemolitionDto.freeCar.targa } as FindManyOptions<Car>) */
 
     let craftedWithdrawPlace: string = createDemolitionDto.luogoRitiro.indirizzo + ', ' + createDemolitionDto.luogoRitiro.civico + ', ' + createDemolitionDto.luogoRitiro.comune + ', ' + createDemolitionDto.luogoRitiro.cap;
-
+    console.log('Car DTO: ', createDemolitionDto.freeCar.toString());
     this.alternativeCreateOne(new Demolition({
       id: Math.floor(100000 + Math.random() * 900000),
       idCanale: createDemolitionDto.idcanale,
       note: createDemolitionDto?.note ? createDemolitionDto.note : '',
       privacy: createDemolitionDto.privacy,
       privacyMarketing: createDemolitionDto.privacyMarketing,
-      freeCar: new Car({...createDemolitionDto.freeCar, autoalimentazione: createDemolitionDto.freeCar.autoalimentazione.id}),
+      freeCar: new Car({...createDemolitionDto.freeCar, autoalimentazione: createDemolitionDto.freeCar.autoalimentazione.id, vaInMoto: createDemolitionDto.freeCar?.vaInMoto, blocked: createDemolitionDto.freeCar?.blocked}),
       luogoRitiro: craftedWithdrawPlace,
       referrer: createDemolitionDto?.referrer?.id ? createDemolitionDto?.referrer?.id : 0,
       source: createDemolitionDto.source,
