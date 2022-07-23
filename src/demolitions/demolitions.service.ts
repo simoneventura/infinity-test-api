@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { randomUUID } from 'crypto';
 import { Car } from 'src/cars/entities/car.entity';
 import { MailService } from 'src/mail/mail.service';
 import { Wrecker } from 'src/wrecker/entities/wrecker.entity';
@@ -26,10 +27,10 @@ export class DemolitionsService {
 
     let craftedWithdrawPlace: string = createDemolitionDto.luogoRitiro.indirizzo + ', ' + createDemolitionDto.luogoRitiro.civico + ', ' + createDemolitionDto.luogoRitiro.comune + ', ' + createDemolitionDto.luogoRitiro.cap;
 
-    this.createOne(new Demolition({
-      id: 10,
+    this.alternativeCreateOne(new Demolition({
+      id: Math.floor(100000 + Math.random() * 900000),
       idCanale: createDemolitionDto.idcanale,
-      note: createDemolitionDto.note ? createDemolitionDto.note : '',
+      note: createDemolitionDto?.note ? createDemolitionDto.note : '',
       privacy: createDemolitionDto.privacy,
       privacyMarketing: createDemolitionDto.privacyMarketing,
       freeCar: new Car({...createDemolitionDto.freeCar, autoalimentazione: createDemolitionDto.freeCar.autoalimentazione.id}),
@@ -146,8 +147,18 @@ export class DemolitionsService {
 }
 
 
+  async alternativeCreateOne(demolition: Demolition){
+    try{
+      await this.demolitionRepository.save(demolition)
+    }catch(err){
+      console.warn('Query not working!')
+      console.warn('Error obj: ', err.toString());
+    }
+    
+  }
 
   async createOne(demolition: Demolition) {
+    
     const queryRunner = this.dataSource.createQueryRunner();
   
     await queryRunner.connect();

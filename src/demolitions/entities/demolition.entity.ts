@@ -7,7 +7,7 @@ export class Demolition {
 
 
     constructor(demolition?: Demolition){
-        this.id = demolition?.id;
+        /* this.id = demolition?.id; */
         this.idCanale = demolition?.idCanale;
         this.note = demolition?.note;
         this.freeCar = demolition?.freeCar;
