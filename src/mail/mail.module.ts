@@ -14,7 +14,7 @@ import { TransportOptions } from 'nodemailer';
         secure: true,
         auth: {
           user: 'demolizione.infinitycar@gmail.com',
-          pass: 'gwqgvplhiwvmmwak'
+          pass: 'tmbqlzwwlxjzeljz'
         },
       },
       defaults: {
