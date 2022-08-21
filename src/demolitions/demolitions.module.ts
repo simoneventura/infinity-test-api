@@ -6,12 +6,14 @@ import { Demolition } from './entities/demolition.entity';
 import { MailModule } from 'src/mail/mail.module';
 import { WreckerModule } from 'src/wrecker/wrecker.module';
 import { WreckerService } from 'src/wrecker/wrecker.service';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Demolition]),
     MailModule,
-    WreckerModule
+    WreckerModule,
+    HttpModule
   ],
   controllers: [DemolitionsController],
   providers: [DemolitionsService, WreckerService],

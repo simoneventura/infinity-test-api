@@ -17,8 +17,8 @@ import { WreckerModule } from './wrecker/wrecker.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'Infinitycar321@',
-      database: 'infinitycar1',
+      password: 'Infinitycar321@'/* 'root' */,
+      database: 'infinitycar1'/* 'test' */,
       /* entities: [Demolition, Car], */
       autoLoadEntities: true,
       synchronize: true,

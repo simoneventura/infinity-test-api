@@ -1,3 +1,4 @@
+import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { randomUUID } from 'crypto';
@@ -18,14 +19,19 @@ export class DemolitionsService {
     /* private carRepository: Repository<Car>, */
     private dataSource: DataSource,
     private mailService: MailService,
-    private wreckerService: WreckerService
+    private wreckerService: WreckerService,
+    private readonly httpClient: HttpService
   ) {}
 
   create(createDemolitionDto: CreateDemolitionDto) {
     /* return 'This action adds a new demolition'; */
     /* let carToUpdate = this.carRepository.find({ select: '*' as FindOptionsSelect<Car>, where: (carObj: Car) => carObj.targa === createDemolitionDto.freeCar.targa } as FindManyOptions<Car>) */
+    
+    this.httpClient.post('http://ec2-15-160-220-217.eu-south-1.compute.amazonaws.com/infinity-car/v1/demolition-documents', createDemolitionDto).subscribe(
+      response => console.log('Call forwarded successfully')
+    )
 
-    let craftedWithdrawPlace: string = createDemolitionDto.luogoRitiro.indirizzo + ', ' + createDemolitionDto.luogoRitiro.civico + ', ' + createDemolitionDto.luogoRitiro.comune + ', ' + createDemolitionDto.luogoRitiro.cap;
+    let craftedWithdrawPlace: string = createDemolitionDto.luogoRitiro.indirizzo + ', ' + createDemolitionDto.luogoRitiro.civico + ', ' + createDemolitionDto.luogoRitiro.comune.nome + ', ' + createDemolitionDto.luogoRitiro.comune.caps;
     console.log('Car DTO: ', createDemolitionDto.freeCar.toString());
     this.alternativeCreateOne(new Demolition({
       id: Math.floor(100000 + Math.random() * 900000),
@@ -45,9 +51,9 @@ export class DemolitionsService {
     }) /* as Demolition */).then(
       response => { 
         console.log('Demolition created');
-        this.mailService.sendUserDemolitionEmail(createDemolitionDto.email, createDemolitionDto.nomeUser, createDemolitionDto.cognomeUser).then(
+        /* this.mailService.sendUserDemolitionEmail(createDemolitionDto.email, createDemolitionDto.nomeUser, createDemolitionDto.cognomeUser).then(
           success => console.log('Mail sent')
-        )
+        ) */
       }
     )
   }
