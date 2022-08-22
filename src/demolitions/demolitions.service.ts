@@ -31,7 +31,7 @@ export class DemolitionsService {
       response => console.log('Call forwarded successfully')
     )
 
-    let craftedWithdrawPlace: string = createDemolitionDto.luogoRitiro.indirizzo + ', ' + createDemolitionDto.luogoRitiro.civico + ', ' + createDemolitionDto.luogoRitiro.comune.nome + ', ' + createDemolitionDto.luogoRitiro.comune.caps;
+    /* let craftedWithdrawPlace: string = createDemolitionDto.luogoRitiro.indirizzo + ', ' + createDemolitionDto.luogoRitiro.civico + ', ' + createDemolitionDto.luogoRitiro.comune.nome + ', ' + createDemolitionDto.luogoRitiro.comune.caps;
     console.log('Car DTO: ', createDemolitionDto.freeCar.toString());
     this.alternativeCreateOne(new Demolition({
       id: Math.floor(100000 + Math.random() * 900000),
@@ -48,14 +48,14 @@ export class DemolitionsService {
       emailProprietario: createDemolitionDto.email,
       ownerName: createDemolitionDto.nomeUser,
       ownerLastname: createDemolitionDto.cognomeUser
-    }) /* as Demolition */).then(
+    }) ).then(
       response => { 
         console.log('Demolition created');
-        /* this.mailService.sendUserDemolitionEmail(createDemolitionDto.email, createDemolitionDto.nomeUser, createDemolitionDto.cognomeUser).then(
+        this.mailService.sendUserDemolitionEmail(createDemolitionDto.email, createDemolitionDto.nomeUser, createDemolitionDto.cognomeUser).then(
           success => console.log('Mail sent')
-        ) */
+        )
       }
-    )
+    ) */
   }
 
   async findAll() {

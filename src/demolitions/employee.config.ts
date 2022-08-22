@@ -6,6 +6,8 @@ export const EMPLOYEE_LIST = () => {
         'Graziano',
         'Gianni',
         'Silvia',
-        'Giovanni'
+        'Giovanni',
+        'Antonella',
+        'Moglie Graziano'
     ]
 }
