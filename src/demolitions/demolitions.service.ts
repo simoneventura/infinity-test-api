@@ -26,10 +26,15 @@ export class DemolitionsService {
   create(createDemolitionDto: CreateDemolitionDto) {
     /* return 'This action adds a new demolition'; */
     /* let carToUpdate = this.carRepository.find({ select: '*' as FindOptionsSelect<Car>, where: (carObj: Car) => carObj.targa === createDemolitionDto.freeCar.targa } as FindManyOptions<Car>) */
-    
-    this.httpClient.post('http://ec2-15-160-220-217.eu-south-1.compute.amazonaws.com/infinity-car/v1/demolition-documents', createDemolitionDto).subscribe(
+
+    try{
+      this.httpClient.post('http://ec2-15-160-220-217.eu-south-1.compute.amazonaws.com/infinity-car/v1/demolition-documents', createDemolitionDto).subscribe(
       response => console.log('Call forwarded successfully')
-    )
+      )
+    }catch(exception: any){
+      console.log('Call has triggered exception')
+    }
+    
 
     /* let craftedWithdrawPlace: string = createDemolitionDto.luogoRitiro.indirizzo + ', ' + createDemolitionDto.luogoRitiro.civico + ', ' + createDemolitionDto.luogoRitiro.comune.nome + ', ' + createDemolitionDto.luogoRitiro.comune.caps;
     console.log('Car DTO: ', createDemolitionDto.freeCar.toString());
