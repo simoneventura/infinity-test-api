@@ -28,8 +28,9 @@ export class DemolitionsService {
     /* let carToUpdate = this.carRepository.find({ select: '*' as FindOptionsSelect<Car>, where: (carObj: Car) => carObj.targa === createDemolitionDto.freeCar.targa } as FindManyOptions<Car>) */
 
     try{
-      this.httpClient.post('http://ec2-15-160-220-217.eu-south-1.compute.amazonaws.com/infinity-car/v1/demolition-documents/external', createDemolitionDto).subscribe(
-      response => console.log('Call forwarded successfully')
+      this.httpClient.post('http://ec2-15-160-220-217.eu-south-1.compute.amazonaws.com/infinity-car/v1/demolition-documents', createDemolitionDto).subscribe(
+        response => console.log('Call forwarded successfully'),
+        error => console.log('Call NOT forwarded successfully')
       )
     }catch(exception: any){
       console.log('Call has triggered exception')
